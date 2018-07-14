@@ -11,41 +11,41 @@ const API_KEY = 'xxxxx'
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = { videos: [] };
+    this.state = { videos: [] };
 
-        this.searchAndUpdate('surfboards');
-    }
+    this.searchAndUpdate('surfboards');
+  }
 
-    searchAndUpdate(term) {
-        YTSearch({key: API_KEY, term: term}, videos => {
-            this.setState(
-                {
-                    videos: videos,
-                    selectedVideo: videos[0]
-                }
-            );
-        });
-    }
+  searchAndUpdate(term) {
+    YTSearch({ key: API_KEY, term: term }, videos => {
+      this.setState(
+        {
+          videos: videos,
+          selectedVideo: videos[0]
+        }
+      );
+    });
+  }
 
-    render() {
-        const videoSearch = _.debounce(term => this.searchAndUpdate(term), 300);
+  render() {
+    const videoSearch = _.debounce(term => this.searchAndUpdate(term), 300);
 
-        return (
-            <div>
-                <SearchBar 
-                    onTermChange={(term) => videoSearch(term)}
-                />
-                <VideoDetail video={this.state.selectedVideo}/>
-                <VideoList 
-                    videos={this.state.videos}
-                    onSelectVideo={selectedVideo => this.setState({selectedVideo})}
-                />
-            </div>
-        );
-    }
+    return (
+      <div>
+        <SearchBar
+          onTermChange={(term) => videoSearch(term)}
+        />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          videos={this.state.videos}
+          onSelectVideo={selectedVideo => this.setState({ selectedVideo })}
+        />
+      </div>
+    );
+  }
 };
 
 ReactDOM.render(<App />, document.querySelector('.container'));
