@@ -4,3 +4,4 @@ All the projects developed during the Udemy course ["Modern React with Redux"](h
 - [Youtube Search Page](./Youtube-Simple-Search)
 - [Book List Viewer Page](./Book-List-Viewer)
 - [Weather List Page](./Weather-App)
+- [Blogging App](./Blog-App)
